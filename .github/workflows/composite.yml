@@ -1,0 +1,18 @@
+name: composite actions test
+
+on: 
+  push:
+
+jobs:
+  composite-action:
+    name: job to test a composite
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./
+        id: compositeAction
+        with:
+           number1: 222
+           number2: 444
+      - run: echo ${{ steps.compositeActions.outputs.result }}      
+        
